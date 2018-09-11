@@ -29,8 +29,9 @@ module Airbrussh
 
       write(string + "\n")
       output.flush
+    rescue Encoding::InvalidByteSequenceError
+      write "...\n"
     end
-
     # Writes directly through to the IO with no truncation or color logic.
     # No newline is added.
     def write(string)
